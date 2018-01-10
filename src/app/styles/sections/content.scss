@@ -1,0 +1,137 @@
+/*
+* Main content
+*/
+
+#content {
+  padding: 230px 0 0 70px;
+  width: 100%;
+  min-height: 100%;
+  background-color: $content-bg;
+  transition: all 400ms cubic-bezier(0.05,0.74,0.27,0.99);
+  z-index: 1;
+
+  .page {
+    padding: 30px;
+
+    &.pull-to-header {
+      transition: all 400ms cubic-bezier(0.05,0.74,0.27,0.99);
+      position: relative;
+      top: -120px;
+      z-index: 5;
+    }
+
+    &.full-height {
+      position: absolute;
+      top: 60px;
+      bottom: 0;
+      padding: 0;
+    }
+  }
+}
+
+.appWrap {
+  &.nav-expanded.force-expanded {
+    #content {
+      padding-left: 280px;
+    }
+    &.rtl {
+      #content {
+        padding-right: 280px;
+        padding-left: 0;
+      }
+    }
+  }
+  &.header-sm {
+    #content {
+      padding-top: 160px;
+
+      .page.pull-to-header {
+        top: -60px;
+      }
+    }
+    &.force-header-sm {
+      #content {
+        padding-top: 60px;
+        position: relative;
+      }
+    }
+  }
+  &.viewport-sm,
+  &.viewport-sm.rtl {
+    #content {
+      padding-top: 60px;
+      padding-left: 0;
+      padding-right: 0;
+
+      .page {
+        &.pull-to-header {
+          top: 0;
+        }
+      }
+    }
+  }
+  &:not(.viewport-sm) {
+    #content {
+      .page.pull-to-header {
+        >.breadcrumb {
+          background: none!important;
+          padding: 8px 0;
+          margin-bottom: 5px;
+
+          >li {
+            a {
+              color: $transparent-white-7;
+
+              &:hover {
+                color: white;
+              }
+            }
+            +li {
+              &:before {
+                color: white;
+              }
+            }
+            &.active {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.hz-menu {
+    @media only screen and (min-width: 1200px) {
+      #content {
+        padding-left: 0;
+      }
+    }
+  }
+  &.rtl {
+    #content {
+      padding: 230px 70px 0 0;
+    }
+  }
+  &.core {
+    #content {
+      padding: 0;
+      background: url(../assets/images/bg.jpg) left top/cover no-repeat;
+      .page {
+        padding-top: 100px;
+      }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .appWrap.core {
+    #content .page {
+      padding-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  #content .page {
+    padding: 30px 10px 30px;
+  }
+}

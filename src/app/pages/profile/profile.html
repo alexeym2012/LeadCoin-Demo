@@ -1,0 +1,162 @@
+<div class="page page-dashboard pull-to-header">
+
+
+
+  <ol class="breadcrumb bg-white">
+    <li><a ui-sref="dashboard">Home</a></li>
+    <li class="active">My Account</li>
+  </ol>
+
+
+  <!-- row -->
+  <div class="row">
+
+
+    <!-- col -->
+    <div class="col-md-6">
+
+
+      <!-- tile -->
+      <div class="tile">
+
+        <!-- tile header -->
+        <section class="tile-header">
+          <h1 class="heading">Personal Info</h1>
+          <div class="controls">
+            <div class="btn-group" uib-dropdown>
+              <button class="btn btn-transparent" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+              <ul class="dropdown-menu dropdown-menu-custom" uib-dropdown-menu role="menu">
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-minimize></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-refresh></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-fullscreen></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-lightbox></a></li>
+              </ul>
+            </div>
+            <minotaur-tile-close></minotaur-tile-close>
+          </div>
+        </section>
+        <!-- /tile header -->
+
+        <!-- tile body -->
+        <section class="tile-body">
+
+          <form name="form" class="form form-horizontal">
+
+            <div class="form-group mt-20">
+              <label for="avatar" class="col-sm-3 control-label minotaur-label">Avatar</label>
+              <div class="col-sm-9">
+                <img ngf-thumbnail="ctrl.user.avatar" alt="" class="mb-10" style="width: 80px; height: 80px"><a href="javascript:;" class="inline-block p-5 text-danger ml-5" ng-click="ctrl.user.avatar = null" ng-show="ctrl.user.avatar"><i class="fa fa-times"></i></a>
+                <input type="file" name="avatar" id="avatar" ng-model="ctrl.user.avatar" ngf-select ngf-pattern="'image/*'" accept="image/*" ngf-max-size="5MB" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name" class="col-sm-3 control-label minotaur-label">Name</label>
+              <div class="col-sm-9">
+                <input type="text" name="name" class="form-control" id="name" placeholder="User name..." ng-model="ctrl.user.name">
+              </div>
+            </div>
+
+            <div class="form-group" ng-show="ctrl.changeEmail">
+              <label for="email" class="col-sm-3 control-label minotaur-label">Email <span class="text-danger" style="font-size: 15px;">*</span></label>
+              <div class="col-sm-9">
+                <input type="email" name="email" class="form-control" id="email" placeholder="User email..." ng-model="ctrl.user.email" required>
+              </div>
+            </div>
+
+            <div class="form-group" ng-show="ctrl.changePass">
+              <label for="oldpassword" class="col-sm-3 control-label minotaur-label">Old Password <span class="text-danger" style="font-size: 15px;">*</span></label>
+              <div class="col-sm-9">
+                <input type="password" name="oldpassword" class="form-control" id="oldpassword" placeholder="User old password..." ng-model="ctrl.oldpassword" ng-required="ctrl.changePass">
+              </div>
+            </div>
+
+            <div class="form-group" ng-show="ctrl.changePass || ctrl.changeEmail">
+              <label for="password" class="col-sm-3 control-label minotaur-label">Password <span class="text-danger" style="font-size: 15px;">*</span></label>
+              <div class="col-sm-9">
+                <input type="password" name="password" class="form-control" id="password" placeholder="User password..." ng-model="ctrl.user.password" ng-required="ctrl.changePass || ctrl.changeEmail">
+              </div>
+            </div>
+
+            <div class="form-group" ng-show="ctrl.changePass || ctrl.changeEmail">
+              <label for="password" class="col-sm-3 control-label minotaur-label">Password Confirm <span class="text-danger" style="font-size: 15px;">*</span></label>
+              <div class="col-sm-9">
+                <input type="password" name="passwordConfirm" placeholder="Password confirmarion..." class="form-control" ng-model="ctrl.passwordConfirm" match="ctrl.user.password" ng-required="ctrl.changePass || ctrl.changeEmail">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="street" class="col-sm-3 control-label minotaur-label">Street</label>
+              <div class="col-sm-9">
+                <input type="text" name="street" class="form-control" id="street" placeholder="User address street..." ng-model="ctrl.user.address.street">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="city" class="col-sm-3 control-label minotaur-label">City</label>
+              <div class="col-sm-9">
+                <input type="text" name="city" class="form-control" id="city" placeholder="User address city..." ng-model="ctrl.user.address.city">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="zip" class="col-sm-3 control-label minotaur-label">ZIP</label>
+              <div class="col-sm-9">
+                <input type="text" name="zip" class="form-control" id="zip" placeholder="User address zip..." ng-model="ctrl.user.address.zip">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="country" class="col-sm-3 control-label minotaur-label">Country</label>
+              <div class="col-sm-9">
+                <input type="text" name="country" class="form-control" id="country" placeholder="User address country..." ng-model="ctrl.user.address.country">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="col-sm-3 control-label minotaur-label">Phone</label>
+              <div class="col-sm-9">
+                <input type="text" name="phone" class="form-control" id="phone" placeholder="User address phone..." ng-model="ctrl.user.phone">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-9 col-md-offset-3">
+                <label class="checkbox minotaur-checkbox mr-20" style="display: inline-block;">
+                  <input type="checkbox" ng-disabled="ctrl.changePass" ng-model="ctrl.changeEmail">
+                  Change email
+                  <div class="input-indicator"></div>
+                </label>
+                <label class="checkbox minotaur-checkbox" style="display: inline-block;">
+                  <input type="checkbox" ng-disabled="ctrl.changeEmail" ng-model="ctrl.changePass">
+                  Change password
+                  <div class="input-indicator"></div>
+                </label>
+              </div>
+            </div>
+
+          </form>
+
+        </section>
+        <!-- /tile body -->
+
+        <div class="tile-footer text-right bg-tr-black lter">
+          <!-- SUBMIT BUTTON -->
+          <button class="btn btn-success minotaur-btn" ng-click="ctrl.save()" ng-disabled="form.$invalid">Save</button>
+        </div>
+
+      </div>
+      <!-- /tile -->
+
+
+    </div>
+    <!-- /col -->
+
+
+  </div>
+  <!-- /row -->
+
+
+
+
+</div>

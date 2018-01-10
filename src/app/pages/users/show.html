@@ -1,0 +1,55 @@
+<div class="page page-users pull-to-header" ng-controller="ShowUserController as vm">
+
+
+
+  <ol class="breadcrumb bg-white">
+    <li><a ui-sref="dashboard">Home</a></li>
+    <li><a ui-sref="users.list">Users</a></li>
+    <li class="active">{{vm.user.name}}</li>
+  </ol>
+
+
+  <!-- row -->
+  <div class="row">
+
+
+    <!-- col -->
+    <div class="col-md-12">
+
+
+      <!-- tile -->
+      <div class="tile tile-simple">
+
+        <!-- tile body -->
+        <section class="tile-body">
+
+          <ul class="list-unstyled m-20">
+            <li ng-if="vm.user.name"><strong>Name:</strong> {{vm.user.name}}</li>
+            <li><strong>Email:</strong> {{vm.user.email}}</li>
+            <li><strong>Address:</strong> {{vm.user.address.street}}, {{vm.user.address.city}} {{vm.user.address.zip}}, {{vm.user.address.country}}</li>
+            <li><strong>Phone:</strong> {{vm.user.phone}}</li>
+            <li><strong>Role:</strong> {{vm.user.role}}</li>
+          </ul>
+
+          <div class="form-footer">
+            <button class="btn btn-lightred minotaur-btn colored" ui-sref="users.list"><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </section>
+        <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+
+    </div>
+    <!-- /col -->
+
+
+  </div>
+  <!-- /row -->
+
+
+
+
+</div>

@@ -1,0 +1,82 @@
+<form name="form" class="form-horizontal form-validation" role="form" ng-submit="vm.submit()">
+
+  <div class="form-group mt-20">
+    <label for="name" class="col-sm-3 control-label minotaur-label">Name</label>
+    <div class="col-sm-9">
+      <input type="text" name="name" class="form-control" id="name" placeholder="User name..." ng-model="vm.user.name">
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="!vm.editing">
+    <label for="email" class="col-sm-3 control-label minotaur-label">Email <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <input type="email" name="email" class="form-control" id="email" placeholder="User email..." ng-model="vm.user.email" required>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="!vm.editing">
+    <label for="password" class="col-sm-3 control-label minotaur-label">Password <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <input type="password" name="password" class="form-control" id="password" placeholder="User password..." ng-model="vm.user.password" required>
+    </div>
+  </div>
+
+  <div class="form-group" ng-if="!vm.editing">
+    <label for="password" class="col-sm-3 control-label minotaur-label">Password Confirm <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <input type="password" name="passwordConfirm" placeholder="Password confirmarion..." class="form-control" ng-model="passwordConfirm" match="vm.user.password" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="role" class="col-sm-3 control-label minotaur-label">Role <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="role" class="form-control" id="role" ng-options="v for (k,v) in ctrl.roles" ng-model="vm.user.role" data-placeholder="Select a role..." required>
+        <option></option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="street" class="col-sm-3 control-label minotaur-label">Street</label>
+    <div class="col-sm-9">
+      <input type="text" name="street" class="form-control" id="street" placeholder="User address street..." ng-model="vm.user.address.street">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="city" class="col-sm-3 control-label minotaur-label">City</label>
+    <div class="col-sm-9">
+      <input type="text" name="city" class="form-control" id="city" placeholder="User address city..." ng-model="vm.user.address.city">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="zip" class="col-sm-3 control-label minotaur-label">ZIP</label>
+    <div class="col-sm-9">
+      <input type="text" name="zip" class="form-control" id="zip" placeholder="User address zip..." ng-model="vm.user.address.zip">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="country" class="col-sm-3 control-label minotaur-label">Country</label>
+    <div class="col-sm-9">
+      <input type="text" name="country" class="form-control" id="country" placeholder="User address country..." ng-model="vm.user.address.country">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone" class="col-sm-3 control-label minotaur-label">Phone</label>
+    <div class="col-sm-9">
+      <input type="text" name="phone" class="form-control" id="phone" placeholder="User address phone..." ng-model="vm.user.phone">
+    </div>
+  </div>
+
+  <div class="form-footer">
+    <button type="submit" class="btn btn-success minotaur-btn pull-right" ng-disabled="form.$invalid">Submit</button>
+    <button class="btn btn-lightred minotaur-btn colored" ui-sref="users.list"><i class="fa fa-arrow-left"></i> Cancel</button>
+  </div>
+
+</form>
+
+

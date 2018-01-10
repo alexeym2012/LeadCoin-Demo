@@ -1,0 +1,114 @@
+<form name="vm.form" class="form-horizontal form-validation" role="form" ng-submit="vm.submit()">
+
+  <div class="form-group mt-20">
+    <label for="id" class="col-sm-3 control-label minotaur-label">ID</label>
+    <div class="col-sm-9">
+      <input type="text" name="id" class="form-control" id="id" placeholder="Product ID..." ng-model="vm.product.id" required disabled>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name" class="col-sm-3 control-label minotaur-label">Name <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <input type="text" name="name" class="form-control" id="name" placeholder="Product name..." ng-model="vm.product.name" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description" class="col-sm-3 control-label minotaur-label">Description <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <textarea name="description" id="description" ng-model="vm.product.description" class="form-control" placeholder="Product description..." rows="5" required></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="shortDescription" class="col-sm-3 control-label minotaur-label">Short Description <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <textarea name="shortDescription" id="shortDescription" ng-model="vm.product.shortDescription" class="form-control" placeholder="Product short description..." rows="2" ng-maxlength="260" required></textarea>
+      <span class="help-block">as show in product listing, max. 260 characters</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category" class="col-sm-3 control-label minotaur-label">Category <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="category" class="form-control" id="category" ng-options="c.$id as c.name group by c.parentName for c in ctrl.childCategories" ng-model="vm.product.categoryId" data-placeholder="Select a category..." required>
+        <option></option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="price" class="col-sm-3 control-label minotaur-label">Price <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <input type="number" class="form-control" name="price" id="price" ng-model="vm.product.price" min="0" step="any" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="discount" class="col-sm-3 control-label minotaur-label">Discount <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input type="number" class="form-control" name="discount" id="discount" ng-model="vm.product.discount" min="0" max="100" required>
+        <div class="input-group-addon">%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="unit" class="col-sm-3 control-label minotaur-label">Unit <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="unit" class="form-control" id="unit" ng-options="k as v for (k,v) in ctrl.units" ng-model="vm.product.unit" data-placeholder="Select a unit..." required>
+        <option></option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="unit" class="col-sm-3 control-label minotaur-label">Status <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="status" class="form-control" id="status" ng-options="v as v for (k,v) in ctrl.statuses" ng-model="vm.product.status" data-placeholder="Select a status..." required>
+        <option></option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label minotaur-label col-sm-3">Images</label>
+    <div class="col-sm-9">
+
+      <ul class="list-unstyled list-inline thumbs-list">
+        <li ng-repeat="image in vm.product.images">
+          <img ngf-thumbnail="image" alt="" style="width: 120px; height: 120px">
+          <img ngf-thumbnail="image.src" alt="" style="width: 120px; height: 120px">
+          <button class="btn-nostyle" ng-click="image = null" ng-show="image && !vm.editing">x</button>
+        </li>
+      </ul>
+
+      <p class="help-block text-danger" ng-show="vm.editing">Adding new images will rewrite actual images!</p>
+
+      <div ngf-drop
+           ngf-select
+           ngf-drag-over-class="dragover"
+           ngf-multiple="true"
+           accept="image/*"
+           ng-model="vm.product.images"
+           class="fileupload drop-box"
+           name="images">
+        click or drop files here...</div>
+
+    </div>
+  </div>
+
+  <div class="form-footer">
+    <i class="fa fa-spinner fa-pulse fa-fw" ng-if="vm.processing"></i>
+    <button type="submit" class="btn btn-success minotaur-btn pull-right" ng-disabled="vm.form.$invalid || vm.processing">Submit</button>
+    <button class="btn btn-lightred minotaur-btn colored" ui-sref="products.list" ng-disabled="vm.processing"><i class="fa fa-arrow-left"></i> Cancel</button>
+  </div>
+
+</form>
+
+

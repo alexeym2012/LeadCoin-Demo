@@ -1,0 +1,46 @@
+<div class="page page-products pull-to-header" ng-controller="NewProductController as vm">
+
+
+
+  <ol class="breadcrumb bg-white">
+    <li><a ui-sref="dashboard">Home</a></li>
+    <li><a ui-sref="products.list">Products</a></li>
+    <li class="active">New Product</li>
+  </ol>
+
+
+  <!-- row -->
+  <div class="row">
+
+
+    <!-- col -->
+    <div class="col-md-12">
+
+
+
+
+      <!-- tile -->
+      <div class="tile tile-simple">
+
+          <!-- tile body -->
+          <section class="tile-body" ng-include="'app/pages/products/_form.html'">
+
+          </section>
+          <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+
+
+
+    </div>
+    <!-- /col -->
+
+
+  </div>
+  <!-- /row -->
+
+
+
+</div>

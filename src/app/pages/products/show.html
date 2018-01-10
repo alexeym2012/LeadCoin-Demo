@@ -1,0 +1,105 @@
+<div class="page page-products pull-to-header" ng-controller="ShowProductController as vm">
+
+
+
+  <ol class="breadcrumb bg-white">
+    <li><a ui-sref="dashboard">Home</a></li>
+    <li><a ui-sref="categories.list">Products</a></li>
+    <li class="active">{{vm.product.name}}</li>
+  </ol>
+
+
+  <!-- row -->
+  <div class="row">
+
+
+    <!-- col -->
+    <div class="col-md-12">
+
+
+      <!-- tile -->
+      <div class="tile tile-simple">
+
+        <!-- tile body -->
+        <section class="tile-body">
+
+          <div class="row">
+
+            <!-- col -->
+            <div class="col-md-4" magnific-popup="{delegate: 'a.img-link', type: 'image'}">
+
+              <a href="{{vm.product.images[0].src}}" class="img-link" ng-show="vm.product.images.length > 0">
+                <img ng-src="{{vm.product.images[0].src}}" alt="vm.product.name" class="img-responsive mb-20">
+              </a>
+
+              <a href="javascript:;" ng-show="vm.product.images.length === 0 || !vm.product.images">
+                <img src="assets/images/no-product-image.png" alt="vm.product.name" class="img-responsive mb-20">
+              </a>
+
+              <!-- thumbnails -->
+              <slick
+                dots="true"
+                infinite="false"
+                speed="300"
+                slides-to-show="4"
+                touch-move="false"
+                slides-to-scroll="1"
+                arrows="false"
+                init-onload="true"
+                data="vm.product.images">
+                <div ng-repeat="image in vm.product.images" ng-if="!$first" href="{{vm.product.images[$index].src}}" class="mr-5">
+                  <a href="{{vm.product.images[$index].src}}" class="img-link">
+                    <img ng-src="{{vm.product.images[$index].src}}" alt="vm.product.name" class="img-responsive">
+                  </a>
+                </div>
+              </slick>
+              <!-- /thumbnails -->
+
+            </div>
+            <!-- /col -->
+
+            <!-- col -->
+            <div class="col-md-8">
+
+              <h2 class="custom-font mb-5">
+                {{vm.product.name}}
+                <span class="label" ng-class="{'bg-success' : vm.product.status == 'published','bg-warning' : vm.product.status == 'not published','bg-lightred' : vm.product.status == 'banned'}">
+                  {{ vm.product.status }}
+                </span>
+              </h2>
+
+              <p class="short-desc text-sm text-default lt mb-20">{{vm.product.shortDescription}}</p>
+              <p class="desc text-default lt mb-20">{{vm.product.description}}</p>
+
+              <h6><strong>Category:</strong> {{ctrl.categoriesObject[vm.product.categoryId].name}}</h6>
+
+              <h3 class="price mt-40 mb-0 text-success">{{ vm.product.price | currency}} / <small>{{vm.product.unit}}</small></h3>
+              <p class="discount text-sm text-default lt">Discount: {{vm.product.discount}}%</p>
+            </div>
+            <!-- /col -->
+
+          </div>
+          <!-- /row -->
+
+          <div class="form-footer">
+            <button class="btn btn-lightred minotaur-btn colored" ui-sref="products.list"><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </section>
+        <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+
+    </div>
+    <!-- /col -->
+
+
+  </div>
+  <!-- /row -->
+
+
+
+
+</div>

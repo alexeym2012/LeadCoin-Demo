@@ -1,0 +1,51 @@
+<div class="nav-heading">
+  <a class="brand" ui-sref="dashboard"></a>
+  <h3>Navigation <a href="javascript:;" class="pull-right" id="expand-toggle"><i class="fa fa-circle-o"></i></a></h3>
+</div>
+
+<div slimscroll="{
+      height: '100%',
+      size: '4px',
+      borderRadius: '0px',
+      opacity: .2
+     }">
+
+  <ul class="nav nav-sidebar">
+    <li ng-class="{'active':$state.includes('dashboard')}">
+      <a ui-sref="dashboard">
+        <span class="nav-text">Dashboard</span>
+        <i class="fa fa-home"></i>
+      </a>
+    </li>
+    <li ng-class="{'active':$state.includes('categories')}">
+      <a ui-sref="categories.list">
+        <span class="nav-text">Categories</span>
+        <i class="fa fa-bookmark-o"></i>
+      </a>
+    </li>
+    <li ng-class="{'active':$state.includes('products')}">
+      <a ui-sref="products.list">
+        <span class="nav-text">Products</span>
+        <i class="fa fa-gift"></i>
+      </a>
+    </li>
+    <li ng-class="{'active':$state.includes('orders')}">
+      <a ui-sref="orders.list">
+        <span class="nav-text">Orders</span>
+        <i class="fa fa-usd"></i>
+      </a>
+    </li>
+    <li ng-class="{'active':$state.includes('users')}">
+      <a ui-sref="users.list">
+        <span class="nav-text">Users</span>
+        <i class="fa fa-users"></i>
+      </a>
+    </li>
+    <li ng-class="{'active':$state.includes('settings')}">
+      <a ui-sref="settings">
+        <span class="nav-text">Settings</span>
+        <i class="fa fa-cog"></i>
+      </a>
+    </li>
+  </ul>
+</div>

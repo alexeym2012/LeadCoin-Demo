@@ -1,0 +1,209 @@
+<div class="page page-orders pull-to-header" ng-controller="ShowOrderController as vm">
+
+
+
+  <ol class="breadcrumb bg-white">
+    <li><a ui-sref="dashboard">Home</a></li>
+    <li><a ui-sref="orders.list">Orders</a></li>
+    <li class="active">{{vm.order.id}}</li>
+  </ol>
+
+
+  <!-- row -->
+  <div class="row">
+
+
+    <!-- col -->
+    <div class="col-md-12">
+
+
+      <!-- tile -->
+      <div class="tile tile-simple">
+
+        <!-- tile body -->
+        <section class="tile-body">
+
+          <!-- row -->
+          <div class="row">
+
+            <!-- col -->
+            <div class="col-md-9">
+              <p class="text-default lt">Created: {{ vm.order.created_at | date: 'MMMM dd, yyyy' }} at {{ vm.order.created_at | date: 'HH:mm' }}</p>
+              <h5 class="text-uppercase text-strong mt-40 mb-0">Status</h5>
+              <h3 class="text-uppercase mt-0 mb-20" ng-class="{'text-success' : vm.order.status == 'approved','text-warning' : vm.order.status == 'pending','text-lightred' : vm.order.status == 'cancelled','text-primary' : vm.order.status == 'received'}">{{vm.order.status | uppercase}}</h3>
+            </div>
+            <!-- /col -->
+
+            <!-- col -->
+            <div class="col-md-3">
+              <h5 class="text-uppercase text-strong mb-10">Customer</h5>
+              <ul class="list-unstyled text-default lt mb-20">
+                <li><strong class="inline-block w-xs">Name:</strong> {{vm.order.customer.name}}</li>
+                <li><strong class="inline-block w-xs">State:</strong> {{vm.order.customer.country}}</li>
+                <li><strong class="inline-block w-xs">Phone:</strong> {{vm.order.customer.phone}}</li>
+                <li><strong class="inline-block w-xs">Email:</strong> <a href="javascript:;">{{vm.order.customer.email}}</a></li>
+              </ul>
+            </div>
+            <!-- /col -->
+
+          </div>
+          <!-- /row -->
+
+          <!-- row -->
+          <div class="row b-t pt-20">
+
+            <!-- col -->
+            <div class="col-md-3 b-r">
+              <h5 class="text-uppercase text-strong mb-10">Order Details</h5>
+              <ul class="list-unstyled text-default lt mb-20">
+                <li><strong>ID:</strong> <a href="javascript:;">{{vm.order.id}}</a></li>
+                <li>{{ vm.order.created_at | date: 'MMMM dd, yyyy' }} at {{ vm.order.created_at | date: 'HH:mm' }}</li>
+                <li>{{vm.order.customer.name}}</li>
+                <li>{{vm.order.customer.country}}</li>
+              </ul>
+            </div>
+            <!-- /col -->
+
+            <!-- col -->
+            <div class="col-md-6 b-r">
+
+              <h5 class="text-uppercase text-strong mb-10">
+                Address
+              </h5>
+
+              <!-- col -->
+              <div class="col-md-6">
+                <ul class="list-unstyled text-default lt mb-20">
+                  <li>{{vm.order.shipTo.name}}</li>
+                  <li>{{vm.order.shipTo.street}}</li>
+                  <li>{{vm.order.shipTo.city}}</li>
+                  <li>{{vm.order.shipTo.zip}}</li>
+                  <li>{{vm.order.shipTo.country}}</li>
+                </ul>
+              </div>
+              <!-- /col -->
+
+              <!-- col -->
+              <div class="col-md-6">
+                <ul class="list-unstyled text-default lt mb-20">
+                  <li>{{vm.order.customer.email}}</li>
+                  <li>{{vm.order.customer.phone}}</li>
+                </ul>
+              </div>
+              <!-- /col -->
+
+            </div>
+            <!-- /col -->
+
+            <!-- col -->
+            <div class="col-md-3">
+              <h5 class="text-uppercase text-strong mb-10">Delivery & Payment</h5>
+              <ul class="list-unstyled text-default lt mb-20">
+                <li><strong>Delivery:</strong> {{vm.order.delivery}}</li>
+                <li><strong>Payment:</strong> {{vm.order.payment}}</li>
+              </ul>
+            </div>
+            <!-- /col -->
+
+          </div>
+          <!-- /row -->
+
+        </section>
+        <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+
+      <!-- tile -->
+      <div class="tile tile-simple">
+
+        <!-- tile body -->
+        <section class="tile-body p-0">
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>Product Image</th>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Unit Price</th>
+                <th>Amount</th>
+                <th>Total</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="(id, product) in vm.order.products">
+                <td style="vertical-align: middle;">
+                  <img ng-src="{{ctrl.productsObject[id].images[0].src}}" alt="{{ctrl.productsObject[id].name}}" style="width: 64px; height: 64px"/>
+                </td>
+                <td style="vertical-align: middle;">
+                  <a ui-sref="products.show({id: id})">{{ctrl.productsObject[id].name}}</a><br>
+                  <span class="text-sm text-muted">{{ctrl.productsObject[id].shortDescription | limitTo: 80}}...</span>
+                </td>
+                <td style="vertical-align: middle;">
+                  {{ctrl.categoriesObject[ctrl.productsObject[id].categoryId].name}}
+                </td>
+                <td style="vertical-align: middle;">
+                  {{product.price | currency}}
+                </td>
+                <td style="vertical-align: middle;">
+                  {{product.amount}}
+                </td>
+                <td style="vertical-align: middle;">
+                  {{(product.price) * product.amount | currency}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </section>
+        <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+
+    </div>
+    <!-- /col -->
+
+
+  </div>
+  <!-- /row -->
+
+
+  <!-- row -->
+  <div class="row">
+    <!-- col -->
+    <div class="col-md-3 col-md-offset-9 price-total">
+
+      <!-- tile -->
+      <div class="tile tile-simple bg-slategray">
+
+        <!-- tile body -->
+        <section class="tile-body">
+
+          <ul class="list-unstyled">
+            <li><strong class="inline-block w-sm mb-5">Subtotal:</strong> {{vm.order.subTotal | currency}}</li>
+            <li><strong class="inline-block w-sm mb-5">Vat %:</strong> {{ main.settings.globalVAT }}</li>
+            <li><strong class="inline-block w-sm mb-5">Vat Total:</strong> {{ vm.order.subTotal * (main.settings.globalVAT / 100) | currency}}</li>
+            <li><strong class="inline-block w-sm">Total:</strong> <h3 class="inline-block text-success">{{ vm.order.subTotal + (vm.order.subTotal * (main.settings.globalVAT / 100)) | currency}}</h3></li>
+          </ul>
+
+        </section>
+        <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+    </div>
+    <!-- /col -->
+  </div>
+  <!-- /row -->
+
+
+
+
+</div>

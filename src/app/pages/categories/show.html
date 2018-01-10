@@ -1,0 +1,52 @@
+<div class="page page-categories pull-to-header" ng-controller="ShowCategoryController as vm">
+
+
+
+  <ol class="breadcrumb bg-white">
+    <li><a ui-sref="dashboard">Home</a></li>
+    <li><a ui-sref="categories.list">Categories</a></li>
+    <li class="active">{{vm.category.name}}</li>
+  </ol>
+
+
+  <!-- row -->
+  <div class="row">
+
+
+    <!-- col -->
+    <div class="col-md-12">
+
+
+      <!-- tile -->
+      <div class="tile tile-simple">
+
+        <!-- tile body -->
+        <section class="tile-body">
+
+          <ul class="list-unstyled m-20">
+            <li><strong>Name:</strong> {{vm.category.name}}</li>
+            <li ng-if="vm.category.parentId"><strong>Parent Category:</strong> {{vm.categoriesObject[vm.category.parentId].name}}</li>
+          </ul>
+
+          <div class="form-footer">
+            <button class="btn btn-lightred minotaur-btn colored" ui-sref="categories.list"><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </section>
+        <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+
+    </div>
+    <!-- /col -->
+
+
+  </div>
+  <!-- /row -->
+
+
+
+
+</div>

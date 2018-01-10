@@ -1,0 +1,76 @@
+<div class="page page-settings pull-to-header">
+
+
+
+  <ol class="breadcrumb bg-white">
+    <li><a ui-sref="dashboard">Home</a></li>
+    <li class="active">Settings</li>
+  </ol>
+
+
+  <!-- row -->
+  <div class="row">
+
+
+    <!-- col -->
+    <div class="col-md-6">
+
+
+      <!-- tile -->
+      <div class="tile">
+
+        <!-- tile header -->
+        <section class="tile-header">
+          <h1 class="heading">Global Settings</h1>
+          <div class="controls">
+            <div class="btn-group" uib-dropdown>
+              <button class="btn btn-transparent" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+              <ul class="dropdown-menu dropdown-menu-custom" uib-dropdown-menu role="menu">
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-minimize></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-refresh></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-fullscreen></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-lightbox></a></li>
+              </ul>
+            </div>
+            <minotaur-tile-close></minotaur-tile-close>
+          </div>
+        </section>
+        <!-- /tile header -->
+
+        <!-- tile body -->
+        <section class="tile-body">
+
+          <form name="form" class="form form-horizontal">
+
+            <div class="form-group">
+              <label for="vat" class="col-sm-3 control-label minotaur-label">Global VAT <span class="text-danger" style="font-size: 15px;">*</span></label>
+              <div class="col-sm-9">
+                <input type="number" name="vat" class="form-control" id="vat" placeholder="Set global VAT value..." ng-model="ctrl.settings.globalVAT" required>
+              </div>
+            </div>
+
+          </form>
+
+        </section>
+        <!-- /tile body -->
+
+        <div class="tile-footer text-right bg-tr-black lter">
+          <!-- SUBMIT BUTTON -->
+          <button class="btn btn-success minotaur-btn" ng-click="ctrl.save()" ng-disabled="form.$invalid">Save</button>
+        </div>
+
+      </div>
+      <!-- /tile -->
+
+
+    </div>
+    <!-- /col -->
+
+
+  </div>
+  <!-- /row -->
+
+
+
+
+</div>

@@ -1,0 +1,304 @@
+<div class="page page-dashboard pull-to-header">
+
+
+
+  <ol class="breadcrumb bg-white">
+    <li><a ui-sref="dashboard">Home</a></li>
+    <li class="active">Dashboard</li>
+  </ol>
+
+
+  <!-- row -->
+  <div class="row">
+
+
+    <!-- col -->
+    <div class="col-md-8">
+
+
+
+      <!-- tile -->
+      <div class="tile" ng-controller="OrdersChartController as vm">
+
+        <!-- tile header -->
+        <section class="tile-header">
+          <h1 class="heading">Orders Value</h1>
+          <div class="controls">
+            <div class="btn-group" uib-dropdown>
+              <button class="btn btn-transparent" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+              <ul class="dropdown-menu dropdown-menu-custom" uib-dropdown-menu role="menu">
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-minimize></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-refresh></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-fullscreen></a></li>
+                <li role="menuitem"><a href="javascript:;" minotaur-tile-lightbox></a></li>
+              </ul>
+            </div>
+            <minotaur-tile-close></minotaur-tile-close>
+          </div>
+        </section>
+        <!-- /tile header -->
+
+        <section class="tile-widget text-right">
+          <div uib-dropdown class="dropdown rounded-dropdown">
+            <button type="button" class="btn btn-default btn-rounded-20" uib-dropdown-toggle>
+              <span ng-show="vm.range === '7d'">7 Days</span>
+              <span ng-show="vm.range === '31d'">31 Days</span>
+              <i class="fa fa-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+              <li role="menuitem"><a href="javascript:;" ng-click="vm.range = '7d'">7 Days</a></li>
+              <li role="menuitem"><a href="javascript:;" ng-click="vm.range = '31d'">31 Days</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- tile body -->
+        <section class="tile-body">
+
+          <canvas id="bar" class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options" chart-dataset-override="vm.datasetOverride" height="70"></canvas>
+
+        </section>
+        <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+
+
+    </div>
+    <!-- /col -->
+
+
+
+    <!-- col -->
+    <div class="col-md-4">
+
+
+      <!-- tile -->
+      <div class="tile" ng-controller="ProductsChartController as vm">
+
+          <!-- tile header -->
+          <section class="tile-header">
+            <h1 class="heading">Product Categories</h1>
+            <div class="controls">
+              <div class="btn-group" uib-dropdown>
+                <button class="btn btn-transparent" uib-dropdown-toggle><i class="fa fa-cog"></i></button>
+                <ul class="dropdown-menu dropdown-menu-custom" uib-dropdown-menu role="menu">
+                  <li role="menuitem"><a href="javascript:;" minotaur-tile-minimize></a></li>
+                  <li role="menuitem"><a href="javascript:;" minotaur-tile-refresh></a></li>
+                  <li role="menuitem"><a href="javascript:;" minotaur-tile-fullscreen></a></li>
+                  <li role="menuitem"><a href="javascript:;" minotaur-tile-lightbox></a></li>
+                </ul>
+              </div>
+              <minotaur-tile-close></minotaur-tile-close>
+            </div>
+          </section>
+          <!-- /tile header -->
+
+          <!-- tile body -->
+          <section class="tile-body">
+            <canvas id="pie" class="chart chart-pie" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.options" height="170"></canvas>
+          </section>
+          <!-- /tile body -->
+
+      </div>
+      <!-- /tile -->
+
+
+    </div>
+    <!-- /col -->
+
+
+  </div>
+  <!-- /row -->
+
+
+
+  <!-- cards row -->
+  <div class="row">
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-lightred">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-gift fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-xl line-xl text-strong mb-0" count-to="{{ctrl.products.length}}" value="0" duration="0.3"></p>
+              <span>
+                <ng-pluralize count="ctrl.products.length"
+                              when="{'0': 'Products',
+                       'one': 'Product',
+                       'other': 'Products'}">
+                </ng-pluralize>
+              </span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-lightred">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-6">
+              <a href="javascript:;" ui-sref="products.list"><i class="fa fa-ellipsis-h fa-2x"></i> Manage Products</a>
+            </div>
+            <div class="col-xs-6">
+              <a href="javascript:;" ui-sref="products.new"><i class="fa fa-plus fa-2x"></i> Add Product</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-greensea">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-shopping-cart fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-xl line-xl text-strong mb-0" count-to="{{ctrl.orders.length}}" value="0" duration="0.3"></p>
+              <span>
+                <ng-pluralize count="ctrl.orders.length"
+                              when="{'0': 'Orders',
+                       'one': 'Order',
+                       'other': 'Orders'}">
+                </ng-pluralize>
+              </span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+        </div>
+        <div class="back bg-greensea">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-12">
+              <a href="javascript:;" ui-sref="orders.list"><i class="fa fa-ellipsis-h fa-2x"></i> Manage Orders</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-slategray">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-users fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-xl line-xl text-strong mb-0" count-to="{{ctrl.activeUsers.length}}" value="0" duration="0.3"></p>
+              <span>
+                <ng-pluralize count="ctrl.activeUsers.length"
+                              when="{'0': 'Users',
+                       'one': 'User',
+                       'other': 'Users'}">
+                </ng-pluralize>
+              </span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-slategray">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-6">
+              <a href="javascript:;" ui-sref="users.list"><i class="fa fa-ellipsis-h fa-2x"></i> Manage Users</a>
+            </div>
+            <div class="col-xs-6">
+              <a href="javascript:;" ui-sref="users.new"><i class="fa fa-plus fa-2x"></i> Add User</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-blue">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-usd fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-xl line-xl text-strong mb-0" count-to="{{ctrl.ordersValue}}" value="0" duration="0.3"></p>
+              <span>Orders value</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-blue">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-12">
+              <a href="javascript:;" ui-sref="orders.list"><i class="fa fa-ellipsis-h fa-2x"></i> Manage Orders</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+  </div>
+  <!-- /row -->
+
+
+
+</div>

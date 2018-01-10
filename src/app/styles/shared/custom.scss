@@ -1,0 +1,150 @@
+.fileupload.drop-box {
+  border: 2px dashed #ccc;
+  margin-top: 10px;
+  padding: 30px;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: #777;
+  font-size: 16px;
+  background-color: #f4f4f4;
+
+  &.dragover {
+    background-color: #fff;
+  }
+}
+
+.thumbs-list {
+  >li {
+    position: relative;
+    padding: 0;
+    margin: 5px;
+    img {
+
+    }
+    button {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      opacity: 0;
+      background-color: rgba(0,0,0,.65);
+      @include transition(all .25s linear);
+      color: white;
+      font-size: 36px;
+    }
+    &:hover {
+      button {
+        color: white;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.page-products {
+  .slick-list {
+    .slick-track {
+      .slick-slide {
+        min-height: 100%;
+        img {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.tile {
+  overflow: visible;
+}
+.tile-body {
+  .form-footer {
+    background-color: #fafafa;
+    margin: 40px -25px -15px -25px;;
+    padding: 20px;
+    border-top: 1px solid #eee;
+  }
+}
+
+div.dropdown.rounded-dropdown {
+  display: inline-block;
+
+  button {
+    margin-right: 0;
+    padding: 5px 15px;
+    @include transition(all .25s linear);
+
+    .glyphicons {
+      line-height: 18px;
+    }
+
+    i {
+      font-size: 12px;
+      color: #777;
+      margin-left: 5px;
+      vertical-align: top;
+      margin-top: 4px;
+    }
+
+    &.btn-sm {
+      padding: 1px 10px;
+
+      +.dropdown-menu {
+        border-radius: 0 0 10px 10px;
+      }
+
+      i {
+        margin-top: 3px;
+        font-size: 10px;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    border-radius: 0 0 20px 20px;
+    margin: 0;
+    padding: 5px 0;
+    border-top: 0;
+    box-shadow: none;
+    min-width: 0;
+    width: 100%;
+    border-color: #adadad;
+    margin-top: -1px;
+
+    >li {
+      >a {
+        color: #19191b;
+        padding: 5px 15px;
+        font-size: 12px;
+
+        .glyphicons {
+          font-size: 14px;
+        }
+
+        &:hover {
+          background-color: transparent;
+          color: $active-el;
+        }
+      }
+    }
+  }
+
+  &.open {
+    button {
+      border-radius: 20px 20px 0 0;
+      border-bottom: 1px solid transparent;
+      background-color: white;
+
+      &.btn {
+        border-radius: 10px 10px 0 0;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: white;
+      }
+    }
+  }
+}

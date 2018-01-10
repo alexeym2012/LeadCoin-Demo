@@ -1,0 +1,53 @@
+<div class="navbar-header">
+  <button type="button" class="header-nav-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false" aria-controls="header-navbar">
+    <span class="sr-only">Toggle header</span>
+    <i class="fa fa-cog"></i>
+  </button>
+  <button type="button" class="navigation-toggle" id="navigation-toggle">
+    <span class="sr-only">Toggle navigation</span>
+    <i class="fa fa-bars"></i>
+  </button>
+  <a class="navbar-brand" ui-sref="dashboard">
+    <span><strong>MIN</strong>OTAUR</span>
+  </a>
+</div>
+<div class="main-search hidden-xs">
+  <form>
+    <input type="text" class="form-control" placeholder="Search...">
+    <button class="btn">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
+</div>
+<div id="header-navbar" class="navbar-collapse collapse">
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <!-- Single button -->
+      <div uib-dropdown>
+        <button id="profile" type="button" class="btn no-bg" uib-dropdown-toggle>
+          <img src="assets/images/placeholder-avatar.png" alt="" class="img-responsive img-circle hidden-xs" ng-if="!main.currentUser.avatar">
+          <img ng-src="{{main.currentUser.avatar}}" alt="" class="img-responsive img-circle hidden-xs" ng-if="main.currentUser.avatar">
+          <span class="nav-text"><i class="fa fa-user"></i> {{main.currentUser.name}}</span>
+        </button>
+        <div class="dropdown-menu with-arrow animated littleFadeInRight profile" uib-dropdown-menu role="menu" aria-labelledby="profile">
+          <div class="media">
+            <div class="media-left">
+              <img src="assets/images/placeholder-avatar.png" alt="" class="media-object img-circle" ng-if="!main.currentUser.avatar">
+              <img ng-src="{{main.currentUser.avatar}}" alt="" class="media-object img-circle" ng-if="main.currentUser.avatar">
+            </div>
+            <div class="media-body">
+              <h4 class="text-sm uppercase-bold">{{main.currentUser.name}}</h4>
+              <a href="javascript:;">{{main.currentUser.email}}</a>
+              <ul class="list-unstyled">
+                <li ng-class="{'active':$state.includes('profile')}"><a ui-sref="profile"><i class="fa fa-user"></i> Edit Profile</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer">
+            <button class="btn btn-theme minotaur-btn" ng-click="header.logout();"><i class="fa fa-power-off"></i> Logout</button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
